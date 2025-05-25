@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -l hello | cut -c 1-10
+chmod u+x g+x o+x hello
