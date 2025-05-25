@@ -1,2 +1,3 @@
 #!/bin/bash
-chmod u+x g+x o+x hello
+chmod u+rwx g+rx o+x hello
+ls -l hello | cut -c1-10
