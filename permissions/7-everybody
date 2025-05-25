@@ -1,3 +1,2 @@
 #!/bin/bash
 ls -l hello | cut -c 1-10
-
