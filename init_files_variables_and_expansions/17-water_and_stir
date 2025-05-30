@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "${WATER:3:3}${STIR:0:1}${WATER:0:3}${STIR:3:1}" | rev
