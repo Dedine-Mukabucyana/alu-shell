@@ -1,0 +1,5 @@
+#!/bin/bash
+find . -type f -name "*.gif" -printf "%f\n" | while IFS= read -r file; do
+    echo "${file%.gif}"
+done | LC_ALL=C sort -f
+echo
