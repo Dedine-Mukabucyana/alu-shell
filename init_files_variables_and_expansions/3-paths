@@ -1,3 +1,2 @@
 #!/bin/bash
-IFS=: read -ra dirs <<<"$PATH"
-printf "%d\n" ${#dirs[@]}
+IFS=: read -ra d <<<"$PATH"; echo ${#d[@]}
