@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -iname '*.gif' -printf '%f\n' | while read f; do echo "${f%.gif}"; done | LC_ALL=C sort -f | { cat; echo; }
+chmod +x 24-gifs
