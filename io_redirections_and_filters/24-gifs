@@ -1,3 +1,2 @@
 #!/bin/bash
-find . -type d | while read d; do find "$d" -maxdepth 1 -type f -name '*.gif' | LC_ALL=C sort -f | head -n1; done | cut -d/ -f2- | rev | cut -d. -f2- | rev | LC_ALL=C sort -f
-
+find . -type d -exec sh -c 'find "$1" -maxdepth 1 -type f -name "*.gif" | LC_ALL=C sort -f | head -n1' sh {} \; | rev | cut -d. -f2- | rev | cut -d/ -f2- | LC_ALL=C sort -f
