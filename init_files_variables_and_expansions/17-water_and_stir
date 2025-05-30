@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "${WATER:3:3}${STIR:0:1}${WATER:0:3}${STIR:3:1}" | rev
+echo "${STIR:4:1}${WATER:7:1}${STIR:6:1}${WATER:4:1}${STIR:2:1}${WATER:1:1}${STIR:5:1}${WATER:2:1}" | tr 'a-z' 'b-z'
