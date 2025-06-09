@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
-# This script displays directory contents showing only parts after first dash
+# Using a for loop to iterate through the content of the current directory
+for item in *
+do
 
-for file in *; do
-    if [ -f "$file" ]; then  # Only process regular files (not directories)
-        # Extract everything after first dash
-        result="${file#*-}"
-        
-        # If there was no dash, skip this file (don't show files without dashes)
-        if [ "$result" != "$file" ]; then
-            echo "$result"
-        fi
+    if [[ $item == .* ]]
+    then
+        continue
     fi
+
+
+    name_part=$(echo "$item" | cut -d '-' -f 2-)
+
+    echo "$name_part"
 done
