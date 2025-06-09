@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script displays directory contents showing only parts after first dash
+
+for file in *; do
+    if [ -f "$file" ]; then  # Only process regular files (not directories)
+        # Extract everything after first dash
+        result="${file#*-}"
+        
+        # If there was no dash, skip this file (don't show files without dashes)
+        if [ "$result" != "$file" ]; then
+            echo "$result"
+        fi
+    fi
+done
