@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-count=1
-while :; do
-    echo "To infinity and beyond (iteration $count)"
+# Chriss, a Bash script that displays  infinity and beyond indefinitely.
+while true; do
+    echo "To infinity and beyond"
     sleep 2
-    ((count++))
 done
