@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+count=1
+while :; do
+    echo "To infinity and beyond (iteration $count)"
+    sleep 2
+    ((count++))
+done
