@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+PID=$(pgrep -f "./4-to_infinity_and_beyond")
+
+if [ -n "$PID" ]; then
+    kill -9 "$PID" 2>/dev/null
+    echo "Terminated PID $PID"
+    exit 0
+else
+    echo "Process not running" >&2
+    exit 1
+fi
