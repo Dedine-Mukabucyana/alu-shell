@@ -1,2 +1,2 @@
 #!/bin/bash
-sed -n '1~2p'
+tr "A-Za-z" "N-ZA-Mn-za-m"
