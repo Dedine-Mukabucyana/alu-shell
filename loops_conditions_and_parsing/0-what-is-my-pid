@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Displays the script's Process ID
+
+current_pid=$$
+echo "$current_pid"
