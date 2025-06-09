@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Displays bash processes and their PIDs without using ps
+
+for proc in /proc/[0-9]*; do
+    if [[ -f "$proc/comm" ]]; then
+        comm=$(cat "$proc/comm")
+        if [[ "$comm" == *bash* ]]; then
+            pid=$(basename "$proc")
+            echo "$pid $comm"
+        fi
+    fi
+done
