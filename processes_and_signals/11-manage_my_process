@@ -2,11 +2,11 @@
 # manage_my_process script
 
 
-start () { 
+start () {
     ./manage_my_process &
     echo $! > /var/run/my_process.pid
     echo "manage_my_process started"               
-} 
+}
 
 stop () {
     pkill -f "./manage_my_process"
