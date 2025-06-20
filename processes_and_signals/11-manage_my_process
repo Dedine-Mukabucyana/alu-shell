@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Init script to manage the manage_my_process background job
 
 PID_FILE="/var/run/my_process.pid"
 SCRIPT_PATH="$(dirname "$(realpath "$0")")/manage_my_process"
@@ -13,10 +14,8 @@ case "$1" in
     if [ -f "$PID_FILE" ]; then
       kill "$(cat "$PID_FILE")" 2>/dev/null
       rm -f "$PID_FILE"
-      echo "manage_my_process stopped"
-    else
-      echo "No running process"
     fi
+    echo "manage_my_process stopped"
     ;;
   restart)
     if [ -f "$PID_FILE" ]; then
@@ -31,4 +30,5 @@ case "$1" in
     echo "Usage: manage_my_process {start|stop|restart}"
     ;;
 esac
+
 
