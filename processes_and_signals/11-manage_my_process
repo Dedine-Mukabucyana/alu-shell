@@ -1,32 +1,34 @@
-#!/usr/bin/env bash
-# manage_my_process script
+#!/bin/bash
 
+PID_FILE="/var/run/my_process.pid"
+SCRIPT_PATH="$(dirname "$(realpath "$0")")/manage_my_process"
 
-start () {
-    ./manage_my_process &
-    echo $! > /var/run/my_process.pid
-    echo "manage_my_process started"               
-}
-
-stop () {
-    pkill -f "./manage_my_process"
-    rm /var/run/my_process.pid
-    echo "manage_my_process stopped"               
-}
-
-restart () {
-    pkill -f "./manage_my_process"
-    rm /var/run/my_process.pid
-    ./manage_my_process &
-    echo $! >> /var/run/my_process.pid
-    echo "manage_my_process restarted"             
-}
 case "$1" in
-   start) start ;;
-   stop)  stop;;
-   restart) restart;;
-   *) echo "Usage: manage_my_process {start|stop|r\
-estart}"                                           
-
-      ;;
+  start)
+    "$SCRIPT_PATH" &
+    echo $! > "$PID_FILE"
+    echo "manage_my_process started"
+    ;;
+  stop)
+    if [ -f "$PID_FILE" ]; then
+      kill "$(cat "$PID_FILE")" 2>/dev/null
+      rm -f "$PID_FILE"
+      echo "manage_my_process stopped"
+    else
+      echo "No running process"
+    fi
+    ;;
+  restart)
+    if [ -f "$PID_FILE" ]; then
+      kill "$(cat "$PID_FILE")" 2>/dev/null
+      rm -f "$PID_FILE"
+    fi
+    "$SCRIPT_PATH" &
+    echo $! > "$PID_FILE"
+    echo "manage_my_process restarted"
+    ;;
+  *)
+    echo "Usage: manage_my_process {start|stop|restart}"
+    ;;
 esac
+
